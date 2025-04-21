@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="result-container">
+        <div class="result-card">
+            <h2>Prediction Result</h2>
+            <div class="result-details">
+                <p><strong>Name:</strong> {{ name }}</p>
+                <p><strong>Predicted Blood Group:</strong> <span class="blood-group">{{ blood_group }}</span></p>
+            </div>
+            <div class="button-group">
+                <a href="{{ url_for('get_started') }}" class="btn result-btn">Predict Another</a>
+                <a href="{{ url_for('blood_banks', state=state, district=district) }}" class="btn bank-btn">View Nearby Blood Banks</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

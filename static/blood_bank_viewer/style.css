@@ -1,0 +1,106 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: hsl(0, 0%, 100%);
+  color: #111827;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  color: #1E3A8A;
+}
+
+header {
+  background-color: #1E3A8A;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+.title-with-gif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.title-with-gif h1 {
+  color: #1E3A8A;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.title-gif {
+  width: 45px;
+  height: auto;
+  border-radius: 5px;
+}
+.dropdowns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+select {
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  color: #1E3A8A;
+  font-weight: 500;
+}
+#controls {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+#results {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+  max-width: 1000px;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  background-color: #1E3A8A;
+  color: white;
+}
+
+a {
+  color: #2563EB;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}

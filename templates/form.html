@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+
+    <title>Predict Blood Group</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar centered-sidebar">
+            <h2 class="sidebar-title">Submit Details to Predict Blood Group Instantly</h2>
+            <div class="illustration">
+                <img src="{{ url_for('static', filename='family-illustration.png') }}" alt="Illustration">
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2>Upload Fingerprint</h2>
+            <p>We’ll use your fingerprint image to predict your blood group securely.</p>
+
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" name="full_name" placeholder="Full Name" required>
+                    <input type="date" name="dob" placeholder="Date of Birth" required>
+                </div>
+                <div class="form-group">
+                    <select name="gender" required>
+                        <option value="" disabled selected>Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <select name="state" id="stateDropdown" required>
+                            <option value="" disabled selected>Select State</option>
+                            {% for state in states %}
+                                <option value="{{ state }}">{{ state }}</option>
+                            {% endfor %}
+                    </select>
+                    <select name="district" id="districtDropdown" required>
+                            <option value="" disabled selected>Select District</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group single">
+                    <label>Upload Fingerprint Image:</label>
+                    <input type="file" name="fingerprint" accept="image/*" required>
+                </div>
+                <button type="submit" class="submit-btn">Predict Blood Group</button>
+            </form>
+            
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("stateDropdown").addEventListener("change", function () {
+            const selectedState = this.value;
+            const districtDropdown = document.getElementById("districtDropdown");
+            districtDropdown.innerHTML = '<option disabled selected>Loading...</option>';
+        
+            fetch(`/get_districts/${selectedState}`)
+                .then(response => response.json())
+                .then(districts => {
+                    districtDropdown.innerHTML = '<option value="" disabled selected>Select District</option>';
+                    districts.forEach(district => {
+                        const option = document.createElement("option");
+                        option.value = district;
+                        option.textContent = district;
+                        districtDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    districtDropdown.innerHTML = '<option disabled selected>Error loading districts</option>';
+                    console.error("Error fetching districts:", error);
+                });
+        });
+        </script>
+        
+</body>
+</html>

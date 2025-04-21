@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Blood Bank Locator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='blood_bank_viewer/style.css') }}">
+</head>
+<body data-excel-url="{{ url_for('static', filename='blood_bank_viewer/blood-banks.xlsx') }}">
+    
+    <div class="header-container">
+        <div class="title-with-gif">
+            <h1>Blood Bank Locator</h1>
+        </div>
+        <div id="results"></div>
+    </div>
+
+    <div class="state-district-info" style="display: none;">
+        <p> <span id="state-name">{{ state }}</span></p>
+        <p> <span id="district-name">{{ district }}</span></p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="{{ url_for('static', filename='blood_bank_viewer/script.js') }}"></script>
+</body>
+</html>
